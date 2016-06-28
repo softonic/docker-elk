@@ -1,0 +1,43 @@
+#!/bin/bash
+
+[ $# -ne 1 ] && echo "Usage: $0 <start|destroy>" && exit 1
+[ -z "${MARATHON_URL}" ] && echo 'Ops! MARATHON_URL is not set' && exit 1
+
+PROJECT_COMPONENTS=( elasticsearch kibana logstash )
+
+function compose_json {
+
+    COUNT=${#PROJECT_COMPONENTS[@]}
+
+    # JSON header:
+    echo '{'
+    echo "  \"id\": \"sys/elk\","
+    echo '    "apps": ['
+    for i in ${PROJECT_COMPONENTS[@]}; do
+
+        # Perform Global modification for all components in marathon.json
+        cat docker/${i}/marathon.json
+
+        [ ${COUNT} -gt 1 ] && {
+          echo -n ','
+          COUNT=$((COUNT - 1))
+        }
+    done
+
+    # JSON footer:
+    echo '  ]'
+    echo '}'
+}
+
+case $1 in
+
+  start)
+    compose_json > marathon.json
+    curl -sX PUT -H "Content-type: application/json" ${MARATHON_URL}/v2/groups -d @marathon.json | jq '.'
+    ;;
+
+  destroy)
+    curl -sX DELETE -H "Content-type: application/json" ${MARATHON_URL}/v2/groups/sys/elk | jq '.'
+    ;;
+
+esac

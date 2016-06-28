@@ -1,0 +1,4 @@
+#!/bin/bash
+
+docker build --rm -f docker/logstash/Dockerfile -t softonic/logstash .
+docker push softonic/logstash
