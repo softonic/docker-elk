@@ -17,7 +17,7 @@
   "container": {
     "type": "DOCKER",
     "docker": {
-      "image": "softonic/logstash",
+      "image": "softonic/elk-logstash",
       "network": "BRIDGE",
       "portMappings": [
         { "containerPort": 12201, "hostPort": 0, "protocol": "udp" }
