@@ -22,6 +22,8 @@ services:
           tag: "<container-name>"
 ```
 
+###### NO_PROXY env variable is machine IP, in mac -> docker-machine env --no-proxy 
+
 ## Use with Marathon
 
 To send logs from your own containers to this elk, you should configure logging driver as gelf pointing to elk stack machine in your stack marathon.json
