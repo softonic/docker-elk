@@ -19,7 +19,7 @@ services:
       logging:
       external:
     ports:
-      - 12201/udp
+      - "12201:12201/udp"
     links:
       - elasticsearch:elasticsearch-elk-sys.marathon
 
