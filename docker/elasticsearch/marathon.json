@@ -4,7 +4,7 @@
   "cpus": 1,
   "mem": 1024,
   "disk": 0,
-  "requirePorts": true,
+  "requirePorts": false,
   "backoffSeconds": 1,
   "backoffFactor": 1.15,
   "maxLaunchDelaySeconds": 3600,
@@ -17,8 +17,8 @@
       "image": "elasticsearch",
       "network": "BRIDGE",
       "portMappings": [
-        { "containerPort": 9200, "hostPort": 0, "protocol": "tcp", "servicePort": 9200 },
-        { "containerPort": 9300, "hostPort": 0, "protocol": "udp", "servicePort": 9300 }
+        { "containerPort": 9200, "hostPort": 0, "protocol": "tcp" },
+        { "containerPort": 9300, "hostPort": 0, "protocol": "udp" }
       ],
       "forcePullImage": false
     }
