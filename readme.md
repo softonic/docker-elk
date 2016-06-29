@@ -9,6 +9,8 @@ The **ELK** stack makes searching and analyzing data easier than ever before. Us
 
 This elk is prepared to be used with marathon or docker-compose.
 
+This stack contains 3 different containers. Elasticsearch, Logstash and Kibana. Each one is using official repository except by logstash, having preconfigured gelf input driver.
+
 ## Use with Docker-compose
 
 To send logs from your own containers to this elk, you should configure logging driver as gelf pointing to elk stack machine in your stack docker-compose
