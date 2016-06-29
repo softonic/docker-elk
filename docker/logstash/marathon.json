@@ -25,16 +25,6 @@
       "forcePullImage": true
     }
   },
-  "healthChecks": [
-    {
-      "protocol": "COMMAND",
-      "command": { "value": "ps aux | grep logstash" },
-      "gracePeriodSeconds": 300,
-      "intervalSeconds": 60,
-      "timeoutSeconds": 20,
-      "maxConsecutiveFailures": 3
-    }
-  ],
   "upgradeStrategy": {
     "minimumHealthCapacity": 0,
     "maximumOverCapacity": 1
